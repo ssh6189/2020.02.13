@@ -1,0 +1,128 @@
+DJANGO
+
+모든 프로그램의 기본은 입출력
+
+FLASK는 단순한 웹서버 : 웹서버 + 파이썬 코드 실행 (서버 사이드 프로그램)
+
+단점 : 매번 서버에서 요청할때마다, 코드를 실행해야 한다.(비효율) PC에서 프로세스를 생성하는것
+
+한명일때는 문제가 안되는데, 몇천명이 할때는 문제가 된다.
+
+소켓베이스는 우리가 URL을 책임지고 호출해야 한다.
+
+
+
+@app route('/')
+
+def hello()
+
+
+
+login, session
+
+
+
+MVC & MTV
+
+Model
+안전하게 데이터를 저장
+
+View
+데이터를 적절하게 유저에게 보여줌
+
+Control, Template(Django)
+사용자의 입력과 이벤트에 반응하여, Model과 View를 업데이트
+
+
+
+모든 어플리케이션은 MVC관점에서 설계할 수 있다.
+
+Django
+               Server
+-----------------------------------------
+                 |  urls.py  |
+  |Web|Server|   View   |model|Database|
+                 |Template|
+
+
+Project와 App
+프로젝트 생성
+Django - admin startproject tutorial
+
+app 생성
+$ ./manage.py startappcommunty
+
+
+###############
+1. django 설치 pip install django
+
+2. django-admin으로 확인
+
+3. django-admin startproject 이름
+
+   그러면, app을 위한 폴더가 생성
+
+폴더에 들어가면, 전체 어플리케이션 운영에 대한 정보가 담겨 있다.
+
+manage.py 시작점
+
+
+
+4. flask와 django의 차이점?
+
+5. django는 아무것도 안해도, 서버가 열린다.
+
+6. python manage.py runserver를 커맨드창에 입력하면, 실행된다.
+
+7. 그리고, localhost:8000를 URL에 입력해서 확인
+
+8. python manage.py startapp 이름  그러면, 프로젝트 하위폴더에, 앱을 위한 폴더(코딩해야 할 부분)이 생성된다.
+
+  실제 코딩할것 전부 views 안에 집어 넣으면 된다.
+
+
+
+
+웹은 요청을하면, HTML을 만들고, HTML을 리턴하고 끝난다.
+
+<head>
+<meta http-equiv = "fresh" content="0;URL='http://www.example.com/'"/>
+</head>
+
+
+
+즉, 리다이렉트를 직접 구현한다는 의미는
+
+HttpResponse("""
+	<script>
+		window.locatio.href = "/service"
+	</scirpt>		
+	""")
+
+브라우저에게 HTML로 리턴한다는것이다.
+
+세션과 쿠키 : 메모리같은것, name-value식으로 쌍으로 들어가있는 딕셔너리
+차이점은
+세션은 클라이언트에 : 보안 취약
+쿠키는 서버에 : 세션보다는 보안이 좋음
+
+세션은 자동으로 유저별로 구분해서 준다.
+유저마다 세션아이디값을 부여
+인터넷익스플로어와 크롬으로 들어오는것도 세션값을 다르게 부여한다.
+
+서버입장에서는, 같은 브라우저를 여러번 띄어도 가능하다.
+
+
+
+SQL LITE : 라이센스 비용이 없다.
+django 에서도 사용한다.
+
+
+#######################################################
+CSFR공격, 배운것을 활용해 가능하다.
+<form action = "http://facebook.com"
+       enctype = "multpart/form-data">
+<input type=idden name=title value = "친구들아 1000원만 빌려줘">
+이버튼을 누르면 500원을 입금시켜줄게<input type = submit value="send> 
+</form>
+#######################################################
